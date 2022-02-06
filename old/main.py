@@ -16,6 +16,8 @@
 # Read the file.
 text = open("book-2.txt", "r").read()
 
+import json
+
 def int_to_roman(input):
     """
     Convert an integer to a Roman numeral.
@@ -64,7 +66,20 @@ for i in chapters:
         chapters.remove(i)
 
 # This snippet gets the first line of each chapter, which is the perspective character's name.
-main_characters = []
+# Note: I have also hard-coded some characters since I realised there needs to be at least 10 in the graph
+main_characters = [
+    "athena",
+    "hera",
+    "poseidon",
+    "zeus",
+    "apollo",
+    "hermes",
+    "artemis",
+    "hades",
+    "demeter",
+    "ares"
+]
+
 for i in chapters:
     main_characters.append(i.splitlines()[1].lower())
 
@@ -119,4 +134,4 @@ for i in chapters:
                 # We haven't seen this perspective yet (the first run).
                 mentions_from_character_perspective[perspective] = {word: 1}
 
-print(mentions_from_character_perspective)
+print(json.dumps(mentions_from_character_perspective))
